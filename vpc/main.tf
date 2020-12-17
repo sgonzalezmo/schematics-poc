@@ -4,7 +4,7 @@ locals {
 }
 
 resource "ibm_is_vpc" "vpc" {
-  name                      = "${local.sys_lwr}-${local.env_lwr}-vpc"
+  name                      = "vpc-${local.sys_lwr}-${local.env_lwr}"
   address_prefix_management = "auto"
   tags                      = ["system:${local.sys_lwr}", "environment:${local.env_lwr}"]
 }
