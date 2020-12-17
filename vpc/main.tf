@@ -1,14 +1,12 @@
 locals {
-  sys_lwr  = lower(var.system)
-  env_lwr  = lower(var.environment)
-  vpc_name = "${local.sys_lwr}-${local.env_lwr}-vpc"
-  vpc_tags = ["system:${local.sys_lwr}", "environment:${local.env_lwr}"]
+  sys_lwr = lower(var.system)
+  env_lwr = lower(var.environment)
 }
 
 resource "ibm_is_vpc" "vpc" {
-  name                      = local.vpc_name
+  name                      = "${local.sys_lwr}-${local.env_lwr}-vpc"
   address_prefix_management = "auto"
-  tags                      = local.vpc_tags
+  tags                      = ["system:${local.sys_lwr}", "environment:${local.env_lwr}"]
 }
 
 resource "ibm_is_vpc_address_prefix" "vpc-ap" {
