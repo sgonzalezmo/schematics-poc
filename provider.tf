@@ -9,5 +9,5 @@ terraform {
 
 # Configure the IBM Provider
 provider "ibm" {
-  region = var.ibmcloud_region
+  region = "eu-de"
 }
