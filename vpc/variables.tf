@@ -1,14 +1,14 @@
 variable "system" {
   type        = string
-  description = ""
+  description = "System name"
 }
 
 variable "environment" {
   type        = string
-  description = ""
+  description = "Environment name"
 }
 
 variable "subnets_cidr" {
   type        = map(string)
-  description = ""
+  description = "A map of zones (key) and CIDRs blocks (value) to use"
 }
