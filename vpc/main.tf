@@ -1,8 +1,8 @@
 locals {
-  system_lower      = lower(var.system)
-  environment_lower = lower(var.environment)
-  vpc_name          = "${local.system_lower}-${local.environment_lower}-vpc"
-  vpc_tags          = ["system:${local.system_lower}", "environment:${local.environment_lower}"]
+  sys_lwr  = lower(var.system)
+  env_lwr  = lower(var.environment)
+  vpc_name = "${local.sys_lwr}-${local.env_lwr}-vpc"
+  vpc_tags = ["system:${local.sys_lwr}", "environment:${local.env_lwr}"]
 }
 
 resource "ibm_is_vpc" "vpc" {
