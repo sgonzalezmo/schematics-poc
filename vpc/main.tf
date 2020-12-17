@@ -8,3 +8,7 @@ resource "ibm_is_vpc" "vpc1" {
   address_prefix_management = "auto"
   tags                      = ["system:${local.system_lower}", "environment:${local.environment_lower}"]
 }
+
+data "ibm_is_vpc" "ds_vpc" {
+  name = "${local.system_lower}-${local.environment_lower}-vpc"
+}
