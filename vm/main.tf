@@ -16,7 +16,7 @@ locals {
   env_lwr = lower(var.environment)
 }
 
-resource "ibm_is_instance" "vms" {
+resource "ibm_is_instance" "vm" {
   count   = var.server_count
   name    = "${var.system}-${local.env_lwr}-${lookup(local.zone_acr, var.zone)}-vm${count.index + 1}"
   image   = lookup(local.images, var.os)
