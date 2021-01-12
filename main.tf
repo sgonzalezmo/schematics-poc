@@ -21,7 +21,7 @@ module "webservers_zone1" {
   system      = local.system
   environment = local.environment
 
-  server_count = 0
+  server_count = 1
   vpc          = module.vpc.vpc_id
   zone         = "eu-de-1"
   profile      = "cx2-2x4"
@@ -44,7 +44,6 @@ resource "null_resource" "webservers_zone1_cluster" {
 }
 */
 
-/*
 module "webservers_zone2" {
   source = "./vm"
 
@@ -57,4 +56,3 @@ module "webservers_zone2" {
   profile      = "cx2-2x4"
   subnet       = module.vpc.subnets_id["eu-de-2"]
 }
-*/
