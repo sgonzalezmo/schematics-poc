@@ -15,7 +15,7 @@ module "vpc" {
     "eu-de-2" = "172.16.2.0/24"
   }
 
-  resource_group = local.resource_group
+  //resource_group = local.resource_group
 }
 
 module "webservers_zone1" {

@@ -13,6 +13,6 @@ variable "subnets_cidr" {
   description = "A map of zones (key) and CIDRs blocks (value) to use"
 }
 
-variable "resource_group" {
+/*variable "resource_group" {
   type = string
-}
+}*/
