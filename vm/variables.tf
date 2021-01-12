@@ -38,3 +38,7 @@ variable "os" {
   description = ""
   default     = "rh7"
 }
+
+variable "resource_group" {
+  type = string
+}

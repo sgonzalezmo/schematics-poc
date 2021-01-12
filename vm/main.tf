@@ -2,6 +2,10 @@ data "ibm_is_ssh_key" "sshkey" {
   name = "schematics-lab-ssh-key"
 }
 
+data "ibm_resource_group" "rg" {
+  name = var.resource_group
+}
+
 locals {
   images = {
     "rh7" = "r010-931515d2-fcc3-11e9-896d-3baa2797200f"
@@ -32,5 +36,6 @@ resource "ibm_is_instance" "vm" {
 
   keys = [data.ibm_is_ssh_key.sshkey.id]
 
-  tags = ["system:${local.sys_lwr}", "environment:${local.env_lwr}"]
+  tags           = ["system:${local.sys_lwr}", "environment:${local.env_lwr}"]
+  resource_group = data.ibm_resource_group.rg.id
 }

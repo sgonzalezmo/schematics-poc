@@ -15,7 +15,7 @@ module "vpc" {
     "eu-de-2" = "172.16.2.0/24"
   }
 
-  //resource_group = local.resource_group
+  resource_group = local.resource_group
 }
 
 module "webservers_zone1" {
@@ -24,11 +24,12 @@ module "webservers_zone1" {
   system      = local.system
   environment = local.environment
 
-  server_count = 1
-  vpc          = module.vpc.vpc_id
-  zone         = "eu-de-1"
-  profile      = "cx2-2x4"
-  subnet       = module.vpc.subnets_id["eu-de-1"]
+  server_count   = 1
+  vpc            = module.vpc.vpc_id
+  zone           = "eu-de-1"
+  profile        = "cx2-2x4"
+  subnet         = module.vpc.subnets_id["eu-de-1"]
+  resource_group = local.resource_group
 }
 
 /*
@@ -53,9 +54,10 @@ module "webservers_zone2" {
   system      = local.system
   environment = local.environment
 
-  server_count = 1
-  vpc          = module.vpc.vpc_id
-  zone         = "eu-de-2"
-  profile      = "cx2-2x4"
-  subnet       = module.vpc.subnets_id["eu-de-2"]
+  server_count   = 1
+  vpc            = module.vpc.vpc_id
+  zone           = "eu-de-2"
+  profile        = "cx2-2x4"
+  subnet         = module.vpc.subnets_id["eu-de-2"]
+  resource_group = local.resource_group
 }
