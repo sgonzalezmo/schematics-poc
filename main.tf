@@ -1,6 +1,7 @@
 locals {
-  system      = "syste"
-  environment = "pre"
+  system         = "syste"
+  environment    = "pre"
+  resource_group = "schematics-poc-rg"
 }
 
 module "vpc" {
@@ -13,6 +14,8 @@ module "vpc" {
     "eu-de-1" = "172.16.1.0/24"
     "eu-de-2" = "172.16.2.0/24"
   }
+
+  resource_group = local.resource_group
 }
 
 module "webservers_zone1" {

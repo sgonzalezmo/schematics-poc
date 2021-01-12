@@ -7,14 +7,16 @@ resource "ibm_is_vpc" "vpc" {
   name                      = "${local.sys_lwr}-${local.env_lwr}-vpc"
   address_prefix_management = "auto"
   tags                      = ["system:${local.sys_lwr}", "environment:${local.env_lwr}"]
+  resource_group            = var.resource_group
 }
 
 resource "ibm_is_vpc_address_prefix" "vpc-ap" {
-  for_each = var.subnets_cidr
-  name     = "${each.key}-ap"
-  zone     = each.key
-  vpc      = ibm_is_vpc.vpc.id
-  cidr     = each.value
+  for_each       = var.subnets_cidr
+  name           = "${each.key}-ap"
+  zone           = each.key
+  vpc            = ibm_is_vpc.vpc.id
+  cidr           = each.value
+  resource_group = var.resource_group
 }
 
 resource "ibm_is_subnet" "vpc_subnet" {
@@ -24,4 +26,5 @@ resource "ibm_is_subnet" "vpc_subnet" {
   zone            = each.key
   ipv4_cidr_block = each.value
   depends_on      = [ibm_is_vpc_address_prefix.vpc-ap]
+  resource_group  = var.resource_group
 }
