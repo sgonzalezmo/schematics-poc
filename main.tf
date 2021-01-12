@@ -21,7 +21,7 @@ module "webservers_zone1" {
   system      = local.system
   environment = local.environment
 
-  server_count = 1
+  server_count = 2
   vpc          = module.vpc.vpc_id
   zone         = "eu-de-1"
   profile      = "cx2-2x4"
