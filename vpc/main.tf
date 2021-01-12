@@ -11,12 +11,11 @@ resource "ibm_is_vpc" "vpc" {
 }
 
 resource "ibm_is_vpc_address_prefix" "vpc-ap" {
-  for_each       = var.subnets_cidr
-  name           = "${each.key}-ap"
-  zone           = each.key
-  vpc            = ibm_is_vpc.vpc.id
-  cidr           = each.value
-  resource_group = var.resource_group
+  for_each = var.subnets_cidr
+  name     = "${each.key}-ap"
+  zone     = each.key
+  vpc      = ibm_is_vpc.vpc.id
+  cidr     = each.value
 }
 
 resource "ibm_is_subnet" "vpc_subnet" {
